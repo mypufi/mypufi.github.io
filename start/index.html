@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pufi VPN</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#070B25;color:#fff;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:flex;justify-content:center}
+.w{width:100%;max-width:420px;padding:28px 20px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
+img{width:112px;height:112px;border-radius:24px;margin-bottom:20px}
+h1{font-size:26px;line-height:1.2;font-weight:800;margin-bottom:10px}
+.sub{font-size:16px;line-height:1.4;color:#c9cbe6;margin-bottom:22px}
+ul{list-style:none;width:100%;text-align:left;margin-bottom:26px}
+li{font-size:16px;line-height:1.35;padding:11px 14px;margin-bottom:8px;background:rgba(255,255,255,.06);border-radius:12px}
+li b{color:#5EF2C8}
+.btn{display:block;width:100%;padding:18px;border-radius:14px;background:#3DDC97;color:#071026;font-size:19px;font-weight:800;text-decoration:none;margin-bottom:12px}
+.hint{font-size:14px;color:#9a9cc0;line-height:1.4;margin-bottom:18px}
+.alt{font-size:14px;color:#c9cbe6}
+.alt a{color:#5EF2C8}
+</style>
+</head>
+<body>
+<div class="w">
+  <img src="puf.png" alt="">
+  <h1>Смени VPN на Pufi</h1>
+  <p class="sub">3 дня бесплатно в Telegram-боте, без карты</p>
+  <ul>
+    <li><b>Не нужно выключать</b> ради банка: российские сайты идут напрямую</li>
+    <li><b>Обход глушилок</b> в каждом платном тарифе</li>
+    <li><b>Остаток старого VPN</b> перенесём, до 3 месяцев</li>
+    <li><b>Автосписаний нет</b>, платишь только когда сам решишь</li>
+  </ul>
+  <a class="btn" id="go" href="https://t.me/pufi_vpn_bot">Открыть в Telegram</a>
+  <p class="hint">Откроется бот. Нажмите «Запустить» и заберите 3 дня бесплатно</p>
+  <p class="alt">Нет Telegram? <a id="site" href="https://pufi-vpn.vitrinka.net/">Подключиться на сайте</a></p>
+</div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var s=(q.get('s')||'').replace(/[^A-Za-z0-9_]/g,'');      // метка бота, напр. utm_xxxx
+  var u=(q.get('u')||'').replace(/[^A-Za-z0-9_]/g,'');      // метка сайта, напр. xxxx
+  var ct=(q.get('ct')||'').replace(/[^A-Za-z0-9_\-]/g,'');  // click id HilltopAds для JS-постбэка
+  var bot='pufi_vpn_bot';
+  var web='https://t.me/'+bot+(s?'?start='+s:'');
+  var tg='tg://resolve?domain='+bot+(s?'&start='+s:'');
+  var ua=navigator.userAgent||'';
+  var isAndroid=/Android/i.test(ua);
+  var a=document.getElementById('go');
+  a.href = isAndroid
+    ? 'intent://resolve?domain='+bot+(s?'&start='+s:'')+'#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url='+encodeURIComponent(web)+';end'
+    : web;
+  if(u){document.getElementById('site').href='https://pufi-vpn.vitrinka.net/?utm='+u;}
+  function beacon(label){
+    if(ct){ try{ new Image().src='https://trackhta.com/close/?token='+encodeURIComponent(ct)+'&label='+label; }catch(e){} }
+  }
+  a.addEventListener('click',function(e){
+    beacon('click');
+    if(!isAndroid){
+      e.preventDefault();
+      var t=Date.now();
+      location.href=tg;
+      setTimeout(function(){ if(Date.now()-t<2500){ location.href=web; } },1500);
+    }
+  });
+})();
+</script>
+</body>
+</html>
