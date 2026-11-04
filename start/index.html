@@ -8,27 +8,33 @@
 <title>Pufi VPN: 3 дня бесплатно</title>
 <link rel="preload" as="image" href="puf.jpg">
 <style>
-:root{--bg:#0B0F30;--mint:#3DDC97;--mint2:#5EF2C8;--lav:#B79BFF;--txt:#fff;--mute:#B9BCDD;--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.1)}
+:root{--bg:#0B0F30;--mint:#3DDC97;--mint2:#5EF2C8;--txt:#fff;--mute:#B9BCDD;--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.1)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
-body{background:radial-gradient(closest-side,rgba(124,92,255,.36),rgba(61,220,151,.09) 58%,transparent) no-repeat 50% calc(62vh - 280px)/560px 560px,var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:radial-gradient(closest-side,rgba(124,92,255,.36),rgba(61,220,151,.09) 58%,transparent) no-repeat 50% calc(72vh - 280px)/560px 560px,var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .w{width:100%;max-width:440px;margin:0 auto;padding:0 20px}
 
-.hero{position:relative;min-height:min(100vh,860px);min-height:min(100svh,860px);display:flex;flex-direction:column;padding-top:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
-.brand{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:700;letter-spacing:.1px;margin-bottom:clamp(12px,2.6vh,24px)}
+.hero{position:relative;min-height:min(100vh,860px);min-height:min(100svh,860px);display:flex;flex-direction:column;padding-top:14px;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.brand{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:700;letter-spacing:.1px;margin-bottom:clamp(10px,2vh,20px)}
 .brand svg{width:18px;height:20px;flex:none}
-h1{font-size:clamp(33px,10.4vw,44px);line-height:1.04;font-weight:800;letter-spacing:-.9px}
+h1{font-size:clamp(26px,8.2vw,38px);line-height:1.06;font-weight:800;letter-spacing:-.8px}
 h1 em{font-style:normal;color:var(--mint2)}
-.sub{margin-top:clamp(8px,1.6vh,14px);font-size:clamp(16px,4.5vw,18px);line-height:1.34;color:#DCDEF5}
-.sub b{color:#fff;font-weight:700}
-.pic{position:relative;flex:1 1 0;min-height:132px;margin:4px 0 -6px;pointer-events:none}
-.pic img{position:absolute;left:50%;bottom:0;height:100%;max-height:min(420px,100vw);width:auto;aspect-ratio:1/1;margin-left:0;transform:translateX(-50%);mix-blend-mode:lighten;animation:float 4.6s ease-in-out infinite}
+.sub{margin-top:clamp(7px,1.3vh,12px);font-size:clamp(15.5px,4.3vw,18px);line-height:1.3;color:#DCDEF5}
 
-.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:62px;padding:16px;border-radius:17px;background:linear-gradient(180deg,#6CF7CC,#37D891);color:#04132A;font-size:clamp(18px,5.2vw,20px);font-weight:800;letter-spacing:-.2px;text-decoration:none;overflow:hidden;box-shadow:0 10px 34px rgba(61,220,151,.38),inset 0 1px 0 rgba(255,255,255,.55);animation:pulse 2.4s ease-in-out infinite}
+.list{list-style:none;margin-top:clamp(10px,1.7vh,16px);display:grid;gap:clamp(5px,1vh,9px)}
+.list li{display:flex;gap:8px;font-size:clamp(14px,3.8vw,16px);line-height:1.27;font-weight:600;letter-spacing:-.15px}
+.list .e{flex:none;width:19px;text-align:center}
+.list .e2{margin-right:5px}
+.list .hot{display:block;padding:9px 12px;margin-bottom:2px;border-radius:13px;background:rgba(94,242,200,.11);border:1px solid rgba(94,242,200,.32)}
+.list .hot b{color:var(--mint2);font-weight:700;font-size:.97em}
+
+.pic{position:relative;flex:1 1 0;min-height:120px;margin:4px 0 -6px;pointer-events:none}
+.pic img{position:absolute;left:50%;bottom:0;height:100%;max-height:min(400px,100vw);width:auto;aspect-ratio:1/1;transform:translateX(-50%);mix-blend-mode:lighten;animation:float 4.6s ease-in-out infinite}
+
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:60px;padding:15px;border-radius:17px;background:linear-gradient(180deg,#6CF7CC,#37D891);color:#04132A;font-size:clamp(18px,5.2vw,20px);font-weight:800;letter-spacing:-.2px;text-decoration:none;overflow:hidden;box-shadow:0 10px 34px rgba(61,220,151,.38),inset 0 1px 0 rgba(255,255,255,.55);animation:pulse 2.4s ease-in-out infinite}
 .btn:after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:28%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);animation:shine 3.6s ease-in-out infinite}
 .btn:active{transform:scale(.985)}
-.btn svg{width:20px;height:20px;flex:none}
-.hint{margin-top:9px;font-size:13.5px;line-height:1.3;color:var(--mute);text-align:center}
+.hint{margin-top:8px;font-size:13.5px;line-height:1.3;color:var(--mute);text-align:center}
 
 section{padding-top:38px}
 h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-bottom:16px}
@@ -45,7 +51,7 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 .steps li:not(:last-child):after{content:"";position:absolute;left:16.5px;top:38px;bottom:3px;width:1px;background:var(--line)}
 .steps b{display:block;color:#fff;font-size:17px;font-weight:700;margin-bottom:2px}
 
-.final{padding:34px 0 calc(96px + env(safe-area-inset-bottom));text-align:center}
+.final{padding:34px 0 calc(36px + env(safe-area-inset-bottom));text-align:center}
 .price{font-size:15px;color:var(--mute);margin-bottom:14px}
 .price b{color:#fff}
 .alt{margin-top:18px;font-size:14px;color:var(--mute)}
@@ -55,10 +61,18 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 .bar.on{transform:none}
 .bar .btn{max-width:408px;margin:0 auto;min-height:54px;padding:12px;animation:none;font-size:18px}
 
-@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+/* Маленькие экраны: заголовок в две строки, кнопка остаётся на первом экране */
+@media (max-height:620px){
+  .sub{font-size:15px}
+  .list .hot{padding:7px 10px}
+  .btn{min-height:54px;padding:12px}
+  .pic{min-height:96px}
+}
+
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
 @keyframes pulse{0%,100%{box-shadow:0 10px 34px rgba(61,220,151,.34),inset 0 1px 0 rgba(255,255,255,.55)}50%{box-shadow:0 10px 46px rgba(61,220,151,.62),inset 0 1px 0 rgba(255,255,255,.55)}}
 @keyframes shine{0%,62%{left:-40%}100%{left:125%}}
-@media (prefers-reduced-motion:reduce){.pic img,.btn,.btn:after{animation:none}}
+@media (prefers-reduced-motion:reduce){.pic img{animation:none}.btn,.btn:after{animation:none}}
 </style>
 </head>
 <body>
@@ -70,7 +84,14 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
       Pufi VPN
     </div>
     <h1>VPN оплачен, а&nbsp;ничего <em>не&nbsp;грузит?</em></h1>
-    <p class="sub">Смени его. При покупке <b>перенесём остаток</b> старой подписки, до&nbsp;3&nbsp;месяцев.</p>
+    <p class="sub">Смените на надёжный VPN, который не&nbsp;отваливается.</p>
+    <ul class="list">
+      <li class="hot"><span class="e2">🔄</span>Старый VPN ещё оплачен?<br><b>Перенесём остаток при покупке, до&nbsp;3&nbsp;мес.</b></li>
+      <li><span class="e">📡</span><span>Обход глушилок и белых списков</span></li>
+      <li><span class="e">🌍</span><span>Европа, США, Азия, до&nbsp;500&nbsp;Мбит/с</span></li>
+      <li><span class="e">🚀</span><span>Безлимитный трафик на обычных серверах</span></li>
+      <li><span class="e">📱</span><span>До&nbsp;15 устройств на тарифе «Навсегда»</span></li>
+    </ul>
     <div class="pic"><img src="puf.jpg" alt="" width="520" height="520"></div>
     <a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
     <p class="hint">Откроется бот в Telegram. Карта не нужна.</p>
@@ -78,19 +99,19 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 
   <div class="w">
     <section>
-      <h2>Что будет по-другому</h2>
+      <h2>Что ещё получите</h2>
       <div class="cards">
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5.5 12.5a10 10 0 0 1 13 0"/><path d="M9 16.2a5 5 0 0 1 6 0"/><path d="M12 20h.01"/></svg></div>
-          <div><h3>Глушат? Подключим обход</h3><p>Серверы обхода глушилок и белых списков есть в каждом платном тарифе.</p></div>
-        </div>
         <div class="card">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M10 21V10"/><path d="M14 21V10"/><path d="M12 3l9 5H3z"/></svg></div>
           <div><h3>Банк открывается сразу</h3><p>Российские сайты идут напрямую, VPN выключать не нужно.</p></div>
         </div>
         <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <div><h3>Скорость до 500 Мбит/с</h3><p>На обычных серверах трафик без лимита.</p></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <div><h3>Стабильная сеть</h3><p>Работала 99,7% времени за последние 90 дней.</p></div>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H8a2.5 2.5 0 1 1 0-5c3 0 4 5 4 5z"/><path d="M12 7h4a2.5 2.5 0 1 0 0-5c-3 0-4 5-4 5z"/></svg></div>
+          <div><h3>Платим до 1500 ₽ за приглашённого друга!</h3><p>Кнопка «Пригласить друга» в боте.</p></div>
         </div>
       </div>
     </section>
@@ -98,9 +119,9 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
     <section>
       <h2>Переход за 3 шага</h2>
       <ol class="steps">
-        <li><b>Открой бота</b>Нажми «Запустить», подпишись на канал и забери 3 дня бесплатно.</li>
-        <li><b>Подключись</b>Настрой по инструкции и проверь на своих сайтах.</li>
-        <li><b>Перенеси остаток</b>Купи тариф от месяца и пришли скрин старой подписки в @pufi_support. Добавим оставшиеся дни, до 3 месяцев.</li>
+        <li><b>Откройте бота</b>Нажмите «Запустить», подпишитесь на канал и заберите 3 дня бесплатно.</li>
+        <li><b>Подключитесь</b>Настройте по инструкции и проверьте на своих сайтах.</li>
+        <li><b>Перенесите остаток</b>Купите у нас тариф от месяца и пришлите скрин старой подписки в @pufi_support. Перенесём остаток, до 3 месяцев.</li>
       </ol>
     </section>
 
