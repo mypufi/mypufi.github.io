@@ -2,40 +2,118 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Pufi VPN</title>
+<meta name="theme-color" content="#0B0F30">
+<title>Pufi VPN: 3 дня бесплатно</title>
+<link rel="preload" as="image" href="puf.jpg">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:#070B25;color:#fff;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:flex;justify-content:center}
-.w{width:100%;max-width:420px;padding:28px 20px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
-img{width:112px;height:112px;border-radius:24px;margin-bottom:20px}
-h1{font-size:26px;line-height:1.2;font-weight:800;margin-bottom:10px}
-.sub{font-size:16px;line-height:1.4;color:#c9cbe6;margin-bottom:22px}
-ul{list-style:none;width:100%;text-align:left;margin-bottom:26px}
-li{font-size:16px;line-height:1.35;padding:11px 14px;margin-bottom:8px;background:rgba(255,255,255,.06);border-radius:12px}
-li b{color:#5EF2C8}
-.btn{display:block;width:100%;padding:18px;border-radius:14px;background:#3DDC97;color:#071026;font-size:19px;font-weight:800;text-decoration:none;margin-bottom:12px}
-.hint{font-size:14px;color:#9a9cc0;line-height:1.4;margin-bottom:18px}
-.alt{font-size:14px;color:#c9cbe6}
-.alt a{color:#5EF2C8}
+:root{--bg:#0B0F30;--mint:#3DDC97;--mint2:#5EF2C8;--lav:#B79BFF;--txt:#fff;--mute:#B9BCDD;--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{background:radial-gradient(closest-side,rgba(124,92,255,.36),rgba(61,220,151,.09) 58%,transparent) no-repeat 50% calc(62vh - 280px)/560px 560px,var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.w{width:100%;max-width:440px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;min-height:min(100vh,860px);min-height:min(100svh,860px);display:flex;flex-direction:column;padding-top:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+.brand{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:700;letter-spacing:.1px;margin-bottom:clamp(12px,2.6vh,24px)}
+.brand svg{width:18px;height:20px;flex:none}
+h1{font-size:clamp(33px,10.4vw,44px);line-height:1.04;font-weight:800;letter-spacing:-.9px}
+h1 em{font-style:normal;color:var(--mint2)}
+.sub{margin-top:clamp(8px,1.6vh,14px);font-size:clamp(16px,4.5vw,18px);line-height:1.34;color:#DCDEF5}
+.sub b{color:#fff;font-weight:700}
+.pic{position:relative;flex:1 1 0;min-height:132px;margin:4px 0 -6px;pointer-events:none}
+.pic img{position:absolute;left:50%;bottom:0;height:100%;max-height:min(420px,100vw);width:auto;aspect-ratio:1/1;margin-left:0;transform:translateX(-50%);mix-blend-mode:lighten;animation:float 4.6s ease-in-out infinite}
+
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:62px;padding:16px;border-radius:17px;background:linear-gradient(180deg,#6CF7CC,#37D891);color:#04132A;font-size:clamp(18px,5.2vw,20px);font-weight:800;letter-spacing:-.2px;text-decoration:none;overflow:hidden;box-shadow:0 10px 34px rgba(61,220,151,.38),inset 0 1px 0 rgba(255,255,255,.55);animation:pulse 2.4s ease-in-out infinite}
+.btn:after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:28%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);animation:shine 3.6s ease-in-out infinite}
+.btn:active{transform:scale(.985)}
+.btn svg{width:20px;height:20px;flex:none}
+.hint{margin-top:9px;font-size:13.5px;line-height:1.3;color:var(--mute);text-align:center}
+
+section{padding-top:38px}
+h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-bottom:16px}
+.cards{display:grid;gap:10px}
+.card{display:flex;gap:13px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:17px}
+.ic{flex:none;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(94,242,200,.12);color:var(--mint2)}
+.ic svg{width:23px;height:23px}
+.card h3{font-size:17px;line-height:1.2;font-weight:700;margin-bottom:3px}
+.card p{font-size:15px;line-height:1.34;color:var(--mute)}
+
+.steps{list-style:none;counter-reset:s}
+.steps li{position:relative;counter-increment:s;padding:0 0 18px 50px;font-size:16px;line-height:1.36;color:var(--mute)}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--mint);color:#04132A;font-weight:800;font-size:16px}
+.steps li:not(:last-child):after{content:"";position:absolute;left:16.5px;top:38px;bottom:3px;width:1px;background:var(--line)}
+.steps b{display:block;color:#fff;font-size:17px;font-weight:700;margin-bottom:2px}
+
+.final{padding:34px 0 calc(96px + env(safe-area-inset-bottom));text-align:center}
+.price{font-size:15px;color:var(--mute);margin-bottom:14px}
+.price b{color:#fff}
+.alt{margin-top:18px;font-size:14px;color:var(--mute)}
+.alt a{color:var(--mint2)}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(11,15,48,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .22s ease}
+.bar.on{transform:none}
+.bar .btn{max-width:408px;margin:0 auto;min-height:54px;padding:12px;animation:none;font-size:18px}
+
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+@keyframes pulse{0%,100%{box-shadow:0 10px 34px rgba(61,220,151,.34),inset 0 1px 0 rgba(255,255,255,.55)}50%{box-shadow:0 10px 46px rgba(61,220,151,.62),inset 0 1px 0 rgba(255,255,255,.55)}}
+@keyframes shine{0%,62%{left:-40%}100%{left:125%}}
+@media (prefers-reduced-motion:reduce){.pic img,.btn,.btn:after{animation:none}}
 </style>
 </head>
 <body>
-<div class="w">
-  <img src="puf.png" alt="">
-  <h1>Смени VPN на Pufi</h1>
-  <p class="sub">3 дня бесплатно в Telegram-боте, без карты</p>
-  <ul>
-    <li><b>Не нужно выключать</b> ради банка: российские сайты идут напрямую</li>
-    <li><b>Обход глушилок</b> в каждом платном тарифе</li>
-    <li><b>Остаток старого VPN</b> перенесём, до 3 месяцев</li>
-    <li><b>Автосписаний нет</b>, платишь только когда сам решишь</li>
-  </ul>
-  <a class="btn" id="go" href="https://t.me/pufi_vpn_bot">Открыть в Telegram</a>
-  <p class="hint">Откроется бот. Нажмите «Запустить» и заберите 3 дня бесплатно</p>
-  <p class="alt">Нет Telegram? <a id="site" href="https://pufi-vpn.vitrinka.net/">Подключиться на сайте</a></p>
-</div>
+
+<main>
+  <div class="hero w">
+    <div class="brand">
+      <svg viewBox="0 0 18 20" fill="none" aria-hidden="true"><path d="M9 1l7.5 2.6v6.1c0 4.5-3.1 7.6-7.5 9.3-4.4-1.7-7.5-4.8-7.5-9.3V3.6L9 1z" fill="#5EF2C8"/></svg>
+      Pufi VPN
+    </div>
+    <h1>VPN оплачен, а&nbsp;ничего <em>не&nbsp;грузит?</em></h1>
+    <p class="sub">Смени его. При покупке <b>перенесём остаток</b> старой подписки, до&nbsp;3&nbsp;месяцев.</p>
+    <div class="pic"><img src="puf.jpg" alt="" width="520" height="520"></div>
+    <a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
+    <p class="hint">Откроется бот в Telegram. Карта не нужна.</p>
+  </div>
+
+  <div class="w">
+    <section>
+      <h2>Что будет по-другому</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5.5 12.5a10 10 0 0 1 13 0"/><path d="M9 16.2a5 5 0 0 1 6 0"/><path d="M12 20h.01"/></svg></div>
+          <div><h3>Глушат? Подключим обход</h3><p>Серверы обхода глушилок и белых списков есть в каждом платном тарифе.</p></div>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M10 21V10"/><path d="M14 21V10"/><path d="M12 3l9 5H3z"/></svg></div>
+          <div><h3>Банк открывается сразу</h3><p>Российские сайты идут напрямую, VPN выключать не нужно.</p></div>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <div><h3>Скорость до 500 Мбит/с</h3><p>На обычных серверах трафик без лимита.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Переход за 3 шага</h2>
+      <ol class="steps">
+        <li><b>Открой бота</b>Нажми «Запустить», подпишись на канал и забери 3 дня бесплатно.</li>
+        <li><b>Подключись</b>Настрой по инструкции и проверь на своих сайтах.</li>
+        <li><b>Перенеси остаток</b>Купи тариф от месяца и пришли скрин старой подписки в @pufi_support. Добавим оставшиеся дни, до 3 месяцев.</li>
+      </ol>
+    </section>
+
+    <div class="final">
+      <p class="price">Дальше <b>от 123 ₽/мес</b> при оплате за год</p>
+      <a class="btn go" id="end" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
+      <p class="alt">Нет Telegram? <a id="site" href="https://pufi-vpn.vitrinka.net/">Подключиться на сайте</a></p>
+    </div>
+  </div>
+</main>
+
+<div class="bar" id="bar"><a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a></div>
+
 <script>
 (function(){
   var q=new URLSearchParams(location.search);
@@ -47,23 +125,36 @@ li b{color:#5EF2C8}
   var tg='tg://resolve?domain='+bot+(s?'&start='+s:'');
   var ua=navigator.userAgent||'';
   var isAndroid=/Android/i.test(ua);
-  var a=document.getElementById('go');
-  a.href = isAndroid
+  var href=isAndroid
     ? 'intent://resolve?domain='+bot+(s?'&start='+s:'')+'#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url='+encodeURIComponent(web)+';end'
     : web;
   if(u){document.getElementById('site').href='https://pufi-vpn.vitrinka.net/?utm='+u;}
   function beacon(label){
     if(ct){ try{ new Image().src='https://trackhta.com/close/?token='+encodeURIComponent(ct)+'&label='+label; }catch(e){} }
   }
-  a.addEventListener('click',function(e){
-    beacon('click');
-    if(!isAndroid){
-      e.preventDefault();
-      var t=Date.now();
-      location.href=tg;
-      setTimeout(function(){ if(Date.now()-t<2500){ location.href=web; } },1500);
-    }
-  });
+  var btns=document.querySelectorAll('.go');
+  for(var i=0;i<btns.length;i++){
+    btns[i].href=href;
+    btns[i].addEventListener('click',function(e){
+      beacon('click');
+      if(!isAndroid){
+        e.preventDefault();
+        var t=Date.now();
+        location.href=tg;
+        setTimeout(function(){ if(Date.now()-t<2500){ location.href=web; } },1500);
+      }
+    });
+  }
+  // Нижняя кнопка появляется, когда основные кнопки ушли с экрана
+  if('IntersectionObserver' in window){
+    var bar=document.getElementById('bar'),seen={};
+    var heroBtn=btns[0],endBtn=document.getElementById('end');
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(x){seen[x.target===heroBtn?'h':'e']=x.isIntersecting;});
+      bar.className=(seen.h||seen.e)?'bar':'bar on';
+    });
+    io.observe(heroBtn);io.observe(endBtn);
+  }
 })();
 </script>
 </body>
