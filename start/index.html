@@ -1,12 +1,26 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-v="a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070B25">
 <title>Pufi VPN: 3 дня бесплатно</title>
-<link rel="preload" as="image" href="puf-guard.jpg">
+<script>
+// Тест трёх лендингов. Каждый посетитель получает один вариант и остаётся на нём.
+// ?v=a, ?v=b, ?v=c показывают вариант принудительно.
+(function(){
+  var k='pufi_v',f=new URLSearchParams(location.search).get('v'),v=null,ok=/^[abc]$/;
+  if(ok.test(f||'')){v=f;}
+  else{
+    try{v=localStorage.getItem(k);}catch(e){}
+    if(!ok.test(v||'')){v='abc'.charAt(Math.floor(Math.random()*3));}
+    try{localStorage.setItem(k,v);}catch(e){}
+  }
+  document.documentElement.setAttribute('data-v',v);
+  new Image().src={a:'puf-guard.jpg',b:'puf-key.jpg',c:'puf-bolt.jpg'}[v];
+})();
+</script>
 <style>
 :root{--bg:#070B25;--mint:#3DDC97;--mint2:#5EF2C8;--txt:#fff;--mute:#B9BCDD;--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.1)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -14,13 +28,18 @@ html{background:var(--bg)}
 body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .w{width:100%;max-width:440px;margin:0 auto;padding:0 20px}
 
-.hero{position:relative;min-height:min(100vh,860px);min-height:min(100svh,860px);display:flex;flex-direction:column;padding-top:14px;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.hero{display:none;position:relative;min-height:min(100vh,860px);min-height:min(100svh,860px);flex-direction:column;padding-top:14px;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+html[data-v=a] .h-a,html[data-v=b] .h-b,html[data-v=c] .h-c{display:flex}
+html[data-v=c] .q1{display:none}
 .brand{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:700;letter-spacing:.1px;margin-bottom:clamp(10px,2vh,20px)}
 .brand svg{width:18px;height:20px;flex:none}
 h1{font-size:clamp(30px,10.4vw,44px);line-height:1.04;font-weight:800;letter-spacing:-1px}
-h1 em{font-style:normal;color:var(--mint2)}
+.h-b h1{font-size:clamp(27px,9.3vw,40px);letter-spacing:-.9px}
+.h-c h1{font-size:clamp(27px,8.6vw,38px);letter-spacing:-.9px}
+h1 em{display:block;font-style:normal;color:var(--mint2)}
 .sub{margin-top:clamp(7px,1.3vh,12px);font-size:clamp(15px,4.1vw,18px);line-height:1.3;color:#DCDEF5}
 .sub b{color:#fff;font-weight:700}
+.brand,h1,.sub,.list,.big,.mini,.rev{position:relative;z-index:1}
 
 .list{list-style:none;margin-top:clamp(10px,1.7vh,16px);display:grid;gap:clamp(5px,1vh,9px)}
 .list li{display:flex;gap:8px;font-size:clamp(14px,3.8vw,16px);line-height:1.27;font-weight:500;letter-spacing:-.2px;color:#C7CAE8}
@@ -29,7 +48,19 @@ h1 em{font-style:normal;color:var(--mint2)}
 .list .hot{display:block;padding:9px 12px;margin-bottom:2px;border-radius:13px;background:rgba(94,242,200,.11);border:1px solid rgba(94,242,200,.32);color:#fff;font-weight:600}
 .list .hot b{color:var(--mint2);font-weight:700;font-size:.97em}
 
-.brand,h1,.sub,.list{position:relative;z-index:1}
+/* Лендинг про перенос */
+.big{display:flex;align-items:center;gap:13px;margin-top:clamp(10px,1.7vh,16px);padding:11px 14px;border-radius:15px;background:rgba(94,242,200,.11);border:1px solid rgba(94,242,200,.32)}
+.big b{flex:none;font-size:clamp(25px,7.4vw,31px);line-height:1;font-weight:800;letter-spacing:-.7px;color:var(--mint2);white-space:nowrap}
+.big span{font-size:clamp(13px,3.5vw,14.5px);line-height:1.24;font-weight:500;color:#DCDEF5}
+.mini{list-style:none;margin-top:clamp(9px,1.5vh,14px);display:grid;gap:clamp(5px,1vh,8px)}
+.mini li{display:flex;gap:9px;align-items:center;font-size:clamp(14px,3.8vw,16px);line-height:1.25;font-weight:500;letter-spacing:-.2px;color:#C7CAE8}
+.mini i{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12.5px;font-weight:800;color:var(--mint2);background:rgba(94,242,200,.12);box-shadow:inset 0 0 0 1px rgba(94,242,200,.35)}
+.mini b{font-weight:700;color:#fff}
+
+/* Лендинг про глушилки */
+.rev{margin-top:clamp(10px,1.7vh,16px);padding:10px 13px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-size:clamp(14px,3.75vw,15.5px);line-height:1.3;color:#fff}
+.rev cite{display:block;margin-top:4px;font-size:12.5px;font-style:normal;color:var(--mute)}
+
 .pic{position:relative;flex:1 1 0;min-height:120px;margin:2px -20px -2px;pointer-events:none}
 .pic:before{content:"";position:absolute;left:0;right:0;top:-34px;bottom:-26px;background:radial-gradient(ellipse closest-side,rgba(124,92,255,0) 42%,rgba(124,92,255,.32) 72%,rgba(124,92,255,0) 100%)}
 .pic img{position:absolute;left:50%;bottom:0;height:100%;max-height:min(400px,100vw);width:auto;aspect-ratio:1/1;transform:translateX(-50%);mix-blend-mode:lighten}
@@ -71,9 +102,12 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 /* Маленькие экраны: кнопка остаётся на первом экране */
 @media (max-height:620px){
   h1{font-size:32px}
+  .h-b h1,.h-c h1{font-size:30px}
   .sub{font-size:15px}
   .list .hot{padding:7px 10px}
   .list li:last-child{display:none}
+  .big{padding:8px 12px}
+  .rev cite{display:none}
   .btn{min-height:54px;padding:12px}
   .pic{min-height:96px}
 }
@@ -85,11 +119,9 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 <body>
 
 <main>
-  <div class="hero w">
-    <div class="brand">
-      <svg viewBox="0 0 18 20" fill="none" aria-hidden="true"><path d="M9 1l7.5 2.6v6.1c0 4.5-3.1 7.6-7.5 9.3-4.4-1.7-7.5-4.8-7.5-9.3V3.6L9 1z" fill="#5EF2C8"/></svg>
-      Pufi VPN
-    </div>
+  <!-- A: ненадёжный VPN -->
+  <div class="hero w h-a">
+    <div class="brand"><svg viewBox="0 0 18 20" fill="none" aria-hidden="true"><path d="M9 1l7.5 2.6v6.1c0 4.5-3.1 7.6-7.5 9.3-4.4-1.7-7.5-4.8-7.5-9.3V3.6L9 1z" fill="#5EF2C8"/></svg>Pufi VPN</div>
     <h1>VPN работает <em>через&nbsp;раз?</em></h1>
     <p class="sub">Смените на надёжный, который не&nbsp;отваливается. <b>Первые&nbsp;3&nbsp;дня&nbsp;бесплатно.</b></p>
     <ul class="list">
@@ -99,16 +131,48 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
       <li><svg class="e" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg><span>Европа, США, Азия, до&nbsp;<b>500&nbsp;Мбит/с</b></span></li>
       <li><svg class="e" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg><span><b>Безлимитный</b> трафик на обычных серверах</span></li>
     </ul>
-    <div class="pic"><img src="puf-guard.jpg" alt="" width="520" height="520"></div>
+    <div class="pic"><img data-src="puf-guard.jpg" alt="" width="520" height="520"></div>
     <a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
     <p class="hint">В Telegram нажмите «Запустить», подпишитесь на канал и заберите 3 дня. Карта не нужна.</p>
+  </div>
+
+  <!-- B: перенос остатка -->
+  <div class="hero w h-b">
+    <div class="brand"><svg viewBox="0 0 18 20" fill="none" aria-hidden="true"><path d="M9 1l7.5 2.6v6.1c0 4.5-3.1 7.6-7.5 9.3-4.4-1.7-7.5-4.8-7.5-9.3V3.6L9 1z" fill="#5EF2C8"/></svg>Pufi VPN</div>
+    <h1>VPN ещё оплачен? <em>Перенесём&nbsp;остаток</em></h1>
+    <p class="sub">Оплаченные дни не пропадут. Сначала проверьте Pufi: <b>3&nbsp;дня&nbsp;бесплатно.</b></p>
+    <div class="big"><b>до 3 мес.</b><span>старой подписки добавим при покупке тарифа от месяца</span></div>
+    <ol class="mini">
+      <li><i>1</i><span><b>Заберите 3 дня</b> на проверку</span></li>
+      <li><i>2</i><span><b>Купите тариф</b> от месяца, если понравится</span></li>
+      <li><i>3</i><span><b>Скрин старой подписки</b> в @pufi_support</span></li>
+    </ol>
+    <div class="pic"><img data-src="puf-key.jpg" alt="" width="520" height="520"></div>
+    <a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
+    <p class="hint">В Telegram нажмите «Запустить», подпишитесь на канал и заберите 3 дня. Карта не нужна.</p>
+  </div>
+
+  <!-- C: глушилки -->
+  <div class="hero w h-c">
+    <div class="brand"><svg viewBox="0 0 18 20" fill="none" aria-hidden="true"><path d="M9 1l7.5 2.6v6.1c0 4.5-3.1 7.6-7.5 9.3-4.4-1.7-7.5-4.8-7.5-9.3V3.6L9 1z" fill="#5EF2C8"/></svg>Pufi VPN</div>
+    <h1>Глушат мобильный? <em>Смените&nbsp;VPN</em></h1>
+    <p class="sub">Серверы обхода глушилок и белых списков есть в&nbsp;каждом платном тарифе.</p>
+    <div class="rev">«Классный VPN, в местах где глушат можно найти рабочий сервер из списка обходов) рекомендую👌»<cite>Отзыв из бота, 26.10.2026</cite></div>
+    <ul class="list">
+      <li><svg class="e" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg><span><b>39–60 ГБ обхода</b> в месяц, можно докупить</span></li>
+      <li><svg class="e" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M10 21V10"/><path d="M14 21V10"/><path d="M12 3l9 5H3z"/></svg><span><b>Банк работает</b>, VPN выключать не нужно</span></li>
+      <li><svg class="e" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span>Скорость до&nbsp;<b>500&nbsp;Мбит/с</b></span></li>
+    </ul>
+    <div class="pic"><img data-src="puf-bolt.jpg" alt="" width="520" height="520"></div>
+    <a class="btn go" href="https://t.me/pufi_vpn_bot">Забрать 3 дня бесплатно</a>
+    <p class="hint">В Telegram: «Запустить», подписка на канал и 3 дня на обычных серверах. Карта не нужна.</p>
   </div>
 
   <div class="w">
     <section>
       <h2>Что пишут клиенты</h2>
       <div class="cards">
-        <div class="card q">
+        <div class="card q q1">
           <blockquote>«Классный VPN, в местах где глушат можно найти рабочий сервер из списка обходов) рекомендую👌»</blockquote>
           <cite>Отзыв из бота, тариф на 30 дней, 26.10.2026</cite>
         </div>
@@ -154,18 +218,20 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
 
 <script>
 (function(){
+  var v=document.documentElement.getAttribute('data-v');
+  // Своя метка из админки на каждый лендинг
+  var id={a:'8mxg9gqj',b:'qnt5ge3f',c:'semh2qa9'}[v];
   var q=new URLSearchParams(location.search);
-  var s=(q.get('s')||'').replace(/[^A-Za-z0-9_]/g,'');      // метка бота, напр. utm_xxxx
-  var u=(q.get('u')||'').replace(/[^A-Za-z0-9_]/g,'');      // метка сайта, напр. xxxx
   var ct=(q.get('ct')||'').replace(/[^A-Za-z0-9_\-]/g,'');  // click id HilltopAds для JS-постбэка
   var bot='pufi_vpn_bot';
-  var web='https://t.me/'+bot+(s?'?start='+s:'');
-  var ua=navigator.userAgent||'';
-  var isAndroid=/Android/i.test(ua);
+  var web='https://t.me/'+bot+'?start=utm_'+id;
+  var isAndroid=/Android/i.test(navigator.userAgent||'');
   var href=isAndroid
-    ? 'intent://resolve?domain='+bot+(s?'&start='+s:'')+'#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url='+encodeURIComponent(web)+';end'
+    ? 'intent://resolve?domain='+bot+'&start=utm_'+id+'#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url='+encodeURIComponent(web)+';end'
     : web;
-  if(u){document.getElementById('site').href='https://pufi-vpn.vitrinka.net/?utm='+u;}
+  document.getElementById('site').href='https://pufi-vpn.vitrinka.net/?utm='+id;
+  var img=document.querySelector('.h-'+v+' .pic img');
+  img.src=img.getAttribute('data-src');
   function beacon(label){
     if(ct){ try{ new Image().src='https://trackhta.com/close/?token='+encodeURIComponent(ct)+'&label='+label; }catch(e){} }
   }
@@ -177,7 +243,7 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
   // Нижняя кнопка появляется, когда основные кнопки ушли с экрана
   if('IntersectionObserver' in window){
     var bar=document.getElementById('bar'),seen={};
-    var heroBtn=btns[0],endBtn=document.getElementById('end');
+    var heroBtn=document.querySelector('.h-'+v+' .go'),endBtn=document.getElementById('end');
     var io=new IntersectionObserver(function(es){
       es.forEach(function(x){seen[x.target===heroBtn?'h':'e']=x.isIntersecting;});
       bar.className=(seen.h||seen.e)?'bar':'bar on';
