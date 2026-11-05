@@ -223,6 +223,15 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
   var id={a:'8mxg9gqj',b:'qnt5ge3f',c:'semh2qa9'}[v];
   var q=new URLSearchParams(location.search);
   var ct=(q.get('ct')||'').replace(/[^A-Za-z0-9_\-]/g,'');  // click id HilltopAds для JS-постбэка
+  var z=(q.get('z')||'').replace(/[^A-Za-z0-9_\-]/g,'').slice(0,40);        // зона HilltopAds
+  // Счётчик заходов и нажатий: только трафик кампании, без предпросмотра по ?v=
+  var live=z.length>=2&&z!=='zoneid'&&!q.get('v');
+  function hit(k){
+    if(!live)return;
+    var u='https://abacus.jasoncameron.dev/hit/pufi-start/'+k;
+    try{fetch(u,{mode:'no-cors',keepalive:true}).catch(function(){});}catch(e){new Image().src=u;}
+  }
+  hit('view-'+v);hit('zv-'+z);
   var bot='pufi_vpn_bot';
   var web='https://t.me/'+bot+'?start=utm_'+id;
   var isAndroid=/Android/i.test(navigator.userAgent||'');
@@ -235,10 +244,13 @@ h2{font-size:26px;line-height:1.12;font-weight:800;letter-spacing:-.5px;margin-b
   function beacon(label){
     if(ct){ try{ new Image().src='https://trackhta.com/close/?token='+encodeURIComponent(ct)+'&label='+label; }catch(e){} }
   }
-  var btns=document.querySelectorAll('.go');
+  var btns=document.querySelectorAll('.go'),tapped=false;
   for(var i=0;i<btns.length;i++){
     btns[i].href=href;
-    btns[i].addEventListener('click',function(){beacon('click');});
+    btns[i].addEventListener('click',function(){
+      beacon('click');
+      if(!tapped){tapped=true;hit('tap-'+v);hit('zt-'+z);}
+    });
   }
   // Нижняя кнопка появляется, когда основные кнопки ушли с экрана
   if('IntersectionObserver' in window){
